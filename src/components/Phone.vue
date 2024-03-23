@@ -1,34 +1,58 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-// let names = {
-//             "camera": "Camera",
-//             "nook-miles": "Nook Miles+",
-//             "critterpedia": "Critterpedia",
-//             "diy": "DIY Recipes",
-//             "design": "Custom Designs",
-//             "map": "Map",
-//             "chat": "Chat Log",
-//             "passport": "Passport",
-//             "best-friends": "Best Friends List"
-//         };
+import CameraIcon from '../assets/images/camera_icon.png'
+import NookMilesIcon from '../assets/images/nook_miles_icon.png'
+import CritterIcon from '../assets/images/critterpedia_icon.png'
 
-//         $(".app-icon").on({
-//             mouseenter: function () {
-//                 $(".title").text(names[$(this).attr("id")]);
-//             },
-//             mouseleave: function () {
-//                 $(".title").text("NookPhone");
-//             }
-//         });
+import DiyIcon from '../assets/images/diy_icon.png'
+import DesignIcon from '../assets/images/design_icon.png'
+import MapIcon from '../assets/images/map_icon.png'
 
-    const time = ref('loading')
-    function updateTime() {
-        let date = new Date();
-        time.value = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-    }
-    updateTime();
-    setInterval(updateTime, 500);
+import ChatIcon from '../assets/images/chat_icon.png'
+import PassportIcon from '../assets/images/passport_icon.png'
+import BestFriendsIcon from '../assets/images/best_friends_icon.png'
+
+import { useToast } from '@/components/ui/toast/use-toast'
+const { toast } = useToast()
+
+
+interface Item {
+    display: string;
+    image: string;
+    id: string;
+}
+
+const phoneItems: Item[] = [
+    {display: 'Camera', image: CameraIcon, id: 'camera'},
+    {display: 'Nook Miles+', image: NookMilesIcon, id: 'nook-miles'},
+    {display: 'Critterpedia', image: CritterIcon, id: 'critterpedia'},
+    {display: 'DIY Recipes', image: DiyIcon, id: 'diy'},
+    {display: 'Custom Designs', image: DesignIcon, id: 'design'},
+    {display: 'Map', image: MapIcon, id: 'map'},
+    {display: 'Chat Log', image: ChatIcon, id: 'chat'},
+    {display: 'Passport', image: PassportIcon, id: 'passport'},
+    {display: 'Best Friends List', image: BestFriendsIcon, id: 'best-friends'},
+]
+
+const time = ref('loading')
+function updateTime() {
+    let date = new Date();
+    time.value = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+}
+updateTime();
+setInterval(updateTime, 500);
+
+const defaultDisplay = 'NookPhone';
+const activeId = ref(defaultDisplay);
+
+function handleClick() {
+    toast({
+        title: '你看，又急',
+        description: '你急你🐎呢'
+    });
+}
+
 </script>
 
 <template>
@@ -46,35 +70,11 @@ import { ref } from 'vue'
                 </div>
             </div>
             <div class="title">
-                NookPhone
+                {{ activeId }}
             </div>
             <div class="app-grid">
-                <div id="camera" class="app-icon">
-                    <img class="app-icon-image" src="../assets/images/camera_icon.png">
-                </div>
-                <div id="nook-miles" class="app-icon">
-                    <img class="app-icon-image" src="../assets/images/nook_miles_icon.png">
-                </div>
-                <div id="critterpedia" class="app-icon">
-                    <img class="app-icon-image" src="../assets/images/critterpedia_icon.png">
-                </div>
-                <div id="diy" class="app-icon">
-                    <img class="app-icon-image" src="../assets/images/diy_icon.png">
-                </div>
-                <div id="design" class="app-icon">
-                    <img class="app-icon-image" src="../assets/images/design_icon.png">
-                </div>
-                <div id="map" class="app-icon">
-                    <img class="app-icon-image" src="../assets/images/map_icon.png">
-                </div>
-                <div id="chat" class="app-icon">
-                    <img class="app-icon-image" src="../assets/images/chat_icon.png">
-                </div>
-                <div id="passport" class="app-icon">
-                    <img class="app-icon-image" src="../assets/images/passport_icon.png">
-                </div>
-                <div id="best-friends" class="app-icon">
-                    <img class="app-icon-image" src="../assets/images/best_friends_icon.png">
+                <div :id="item.id" :key="item.id" class="app-icon" v-for="item in phoneItems" @mouseenter="activeId = item.display" @mouseleave="activeId = defaultDisplay" @click="handleClick">
+                    <img class="app-icon-image" :src="item.image">
                 </div>
             </div>
         </div>
@@ -133,7 +133,7 @@ import { ref } from 'vue'
 
 .title {
     text-align: center;
-	color: #807256;
+    color: #807256;
     font-family: "Varela Round", sans-serif;
     font-size: 35px;
     font-weight: bold;
@@ -165,6 +165,7 @@ import { ref } from 'vue'
     width: 98px;
     height: 98px;
     transition: transform .15s;
+    cursor: pointer;
 }
 
 .app-icon-image:hover {
