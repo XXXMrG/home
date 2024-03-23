@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import Phone from './components/Phone.vue'
 import Toaster from '@/components/ui/toast/Toaster.vue'
 
 </script>
 
 <template>
-  <Phone />
+  <RouterView />
   <Toaster />
 </template>
 

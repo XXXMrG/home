@@ -16,6 +16,9 @@ import BestFriendsIcon from '../assets/images/best_friends_icon.png'
 import { useToast } from '@/components/ui/toast/use-toast'
 const { toast } = useToast()
 
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
 
 interface Item {
     display: string;
@@ -46,11 +49,16 @@ setInterval(updateTime, 500);
 const defaultDisplay = 'NookPhone';
 const activeId = ref(defaultDisplay);
 
-function handleClick() {
-    toast({
-        title: '你看，又急',
-        description: '你急你🐎呢'
-    });
+function handleClick(id: string) {
+    if (id === 'design') {
+        router.push('/bm')
+    }
+    else {
+        toast({
+            title: '你看，又急',
+            description: '你急你🐎呢'
+        });
+    }
 }
 
 </script>
@@ -73,7 +81,7 @@ function handleClick() {
                 {{ activeId }}
             </div>
             <div class="app-grid">
-                <div :id="item.id" :key="item.id" class="app-icon" v-for="item in phoneItems" @mouseenter="activeId = item.display" @mouseleave="activeId = defaultDisplay" @click="handleClick">
+                <div :id="item.id" :key="item.id" class="app-icon" v-for="item in phoneItems" @mouseenter="activeId = item.display" @mouseleave="activeId = defaultDisplay" @click="() => handleClick(item.id)">
                     <img class="app-icon-image" :src="item.image">
                 </div>
             </div>

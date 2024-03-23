@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Hind:wght@700&family=Varela+Round&display=swap");
+@import "../assets/font/LxgwWenKai-Screen/result.css";
 
 :root {
-  font-family: "Varela Round", Inter, system-ui, Avenir, Helvetica, Arial,
-    sans-serif;
+  font-family: "LXGW WenKai Screen", "Varela Round", Inter, system-ui, Avenir,
+    Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 

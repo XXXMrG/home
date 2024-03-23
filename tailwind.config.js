@@ -22,6 +22,9 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        'ch': ['LXGW WenKai Screen', 'system-ui']
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
