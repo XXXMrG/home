@@ -26,7 +26,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="flex flex-col items-center justify-between h-full">
+    <div class="flex flex-col items-center justify-between h-full overflow-auto">
         <h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mt-10">苞米今天买车了么？？？</h1>
         <div class="flex flex-col items-center flex-1 mt-[10vh] gap-6">
             <h2 class="mt-10 scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors">现在是：</h2>
