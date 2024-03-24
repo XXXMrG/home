@@ -1,24 +1,23 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from 'vue';
 
-import CameraIcon from '../assets/images/camera_icon.png'
-import NookMilesIcon from '../assets/images/nook_miles_icon.png'
-import CritterIcon from '../assets/images/critterpedia_icon.png'
+import CameraIcon from '../assets/images/camera_icon.png';
+import CritterIcon from '../assets/images/critterpedia_icon.png';
+import NookMilesIcon from '../assets/images/nook_miles_icon.png';
 
-import DiyIcon from '../assets/images/diy_icon.png'
-import DesignIcon from '../assets/images/design_icon.png'
-import MapIcon from '../assets/images/map_icon.png'
+import DesignIcon from '../assets/images/design_icon.png';
+import DiyIcon from '../assets/images/diy_icon.png';
+import MapIcon from '../assets/images/map_icon.png';
 
-import ChatIcon from '../assets/images/chat_icon.png'
-import PassportIcon from '../assets/images/passport_icon.png'
-import BestFriendsIcon from '../assets/images/best_friends_icon.png'
+import BestFriendsIcon from '../assets/images/best_friends_icon.png';
+import ChatIcon from '../assets/images/chat_icon.png';
+import PassportIcon from '../assets/images/passport_icon.png';
 
-import { useToast } from '@/components/ui/toast/use-toast'
-const { toast } = useToast()
+import { useToast } from '@/components/ui/toast/use-toast';
+const { toast } = useToast();
 
-import { useRouter } from 'vue-router'
-const router = useRouter()
-
+import { useRouter } from 'vue-router';
+const router = useRouter();
 
 interface Item {
     display: string;
@@ -27,21 +26,29 @@ interface Item {
 }
 
 const phoneItems: Item[] = [
-    {display: 'Camera', image: CameraIcon, id: 'camera'},
-    {display: 'Nook Miles+', image: NookMilesIcon, id: 'nook-miles'},
-    {display: 'Critterpedia', image: CritterIcon, id: 'critterpedia'},
-    {display: 'DIY Recipes', image: DiyIcon, id: 'diy'},
-    {display: 'Custom Designs', image: DesignIcon, id: 'design'},
-    {display: 'Map', image: MapIcon, id: 'map'},
-    {display: 'Chat Log', image: ChatIcon, id: 'chat'},
-    {display: 'Passport', image: PassportIcon, id: 'passport'},
-    {display: 'Best Friends List', image: BestFriendsIcon, id: 'best-friends'},
-]
+    { display: 'Camera', image: CameraIcon, id: 'camera' },
+    { display: 'Nook Miles+', image: NookMilesIcon, id: 'nook-miles' },
+    { display: 'Critterpedia', image: CritterIcon, id: 'critterpedia' },
+    { display: 'DIY Recipes', image: DiyIcon, id: 'diy' },
+    { display: 'Custom Designs', image: DesignIcon, id: 'design' },
+    { display: 'Map', image: MapIcon, id: 'map' },
+    { display: 'Chat Log', image: ChatIcon, id: 'chat' },
+    { display: 'Passport', image: PassportIcon, id: 'passport' },
+    {
+        display: 'Best Friends List',
+        image: BestFriendsIcon,
+        id: 'best-friends',
+    },
+];
 
-const time = ref('loading')
+const time = ref('loading');
 function updateTime() {
     let date = new Date();
-    time.value = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+    time.value = date.toLocaleString('en-US', {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true,
+    });
 }
 updateTime();
 setInterval(updateTime, 500);
@@ -51,16 +58,14 @@ const activeId = ref(defaultDisplay);
 
 function handleClick(id: string) {
     if (id === 'design') {
-        router.push('/bm')
-    }
-    else {
+        router.push('/bm');
+    } else {
         toast({
             title: '你看，又急',
-            description: '你急你🐎呢'
+            description: '你急你🐎呢',
         });
     }
 }
-
 </script>
 
 <template>

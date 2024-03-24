@@ -1,28 +1,27 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, computed } from 'vue';
 import { format } from 'date-fns';
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 
 const currentTime = ref(new Date());
 
 // 使用 date-fns 的 format 函数来格式化日期和时间
 const formattedDateTime = computed(() => {
-  const date = format(currentTime.value, 'yyyy-MM-dd');
-  const time = format(currentTime.value, 'HH:mm:ss.SSS');
-  
-  return [date, time];
+    const date = format(currentTime.value, 'yyyy-MM-dd');
+    const time = format(currentTime.value, 'HH:mm:ss.SSS');
+
+    return [date, time];
 });
 
 onMounted(() => {
-  const updateFrequency = 1; // 每1毫秒更新一次
-  const timer = setInterval(() => {
-    currentTime.value = new Date(); // 更新时间
-  }, updateFrequency);
+    const updateFrequency = 1; // 每1毫秒更新一次
+    const timer = setInterval(() => {
+        currentTime.value = new Date(); // 更新时间
+    }, updateFrequency);
 
-  onBeforeUnmount(() => {
-    clearInterval(timer); // 组件销毁前清除定时器
-  });
+    onBeforeUnmount(() => {
+        clearInterval(timer); // 组件销毁前清除定时器
+    });
 });
-
 </script>
 
 <template>
@@ -38,4 +37,3 @@ onMounted(() => {
         </div>
     </div>
 </template>
-
