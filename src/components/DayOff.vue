@@ -1,4 +1,9 @@
 <script setup lang="ts">
+/**
+ * @file source code form https://codepen.io/acupoftee/pen/gOaoWmX
+ * just converted to vue template
+ */
+
 const cherryBlossomCount = 23;
 const fruitCount = 3;
 const flowerPetalCount = 5;
@@ -74,6 +79,92 @@ const totalTrees = 6;
                     <div class="side-window"></div>
                 </div>
                 <div class="roof-top"></div>
+            </div>
+            <div class="right-roof-top"></div>
+            <div class="right-roof-cleanup">
+                <div class="roof-filling"></div>
+            </div>
+            <div class="trees">
+                <div class="tree" v-for="treeIdx in totalTrees">
+                    <div class="trunk">
+                        <div class="roots">
+                            <div class="root" v-for="_i in rootCount"></div>
+                        </div>
+                    </div>
+                    <div class="leaves cherry-blossoms" v-if="treeIdx % 2 === 0">
+                        <div class="cherry-blossom" v-for="_i in cherryBlossomCount">
+                            <div class="petal" v-for="_i in flowerPetalCount"></div>
+                        </div>
+                    </div>
+                    <template v-else>
+                        <div class="leaves">
+                            <div class="leaf" v-for="_i in leafCount"></div>
+                        </div>
+                        <div class="fruits">
+                            <div class="fruit pear" v-for="_i in fruitCount"></div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+            <div class="flower-field">
+                <div class="flowers" v-for="_i in totalFlowers">
+                    <div class="flower-leaves"></div>
+                    <div class="bunch">
+                        <div class="flower" v-for="_i in flowerCount">
+                            <div class="petal" v-for="_i in flowerPetalCount"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rose-field">
+                <div class="roses" v-for="_i in totalRoses">
+                    <div class="rose-leaves"></div>
+                    <div class="stems"></div>
+                    <div class="bunch">
+                        <div class="rose" v-for="_i in flowerCount">
+                            <div class="rose-petal" v-for="_i in flowerPetalCount"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="isabelle">
+                <div class="legs"></div>
+                <div class="arm right-arm"></div>
+                <div class="dress"></div>
+                <div class="arm left-arm"></div>
+                <div class="head-container">
+                    <div class="head">
+                        <div class="right-ear"></div>
+                        <div class="left-ear"></div>
+                        <div class="bangs"></div>
+                        <div class="ponytail"></div>
+                        <div class="face">
+                            <div class="eyes"></div>
+                            <div class="closed"></div>
+                            <div class="cheeks"></div>
+                            <div class="mouth"></div>
+                            <div class="nose"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="palm-tree">
+                <div class="palm-trunk"></div>
+                <div class="palm-fruit"></div>
+                <div class="palm-leaves">
+                    <div class="palm-leaf" v-for="_i in 4">
+                        <div class="edges" v-for="_i in 5"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="palm-tree joycon-tree">
+                <div class="palm-trunk"></div>
+                <div class="palm-fruit"></div>
+                <div class="palm-leaves">
+                    <div class="palm-leaf" v-for="_i in 4">
+                        <div class="edges" v-for="_i in 5"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
