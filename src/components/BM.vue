@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { format } from 'date-fns';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
+import { Button } from '@/components/ui/button';
+import confetti from 'canvas-confetti';
 
 const currentTime = ref(new Date());
 
@@ -22,6 +24,11 @@ onMounted(() => {
         clearInterval(timer); // 组件销毁前清除定时器
     });
 });
+
+const handleClick = () => {
+    const cars = confetti.shapeFromText({text: '苞米加油'});
+    confetti({shapes: [cars], particleCount: 100, spread: 100, scalar: 2});
+};
 </script>
 
 <template>
@@ -33,7 +40,7 @@ onMounted(() => {
             <div class="text-5xl">{{ formattedDateTime[1] }}</div>
             <div class="text-lg font-semibold">苞米今天买车了么？</div>
             <div class="text-9xl font-extrabold text-red-600">没有!</div>
-            <div class="text-9xl">🙄</div>
+            <Button @click="handleClick">点击为苞米助力！</Button>
         </div>
     </div>
 </template>
