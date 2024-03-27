@@ -42,11 +42,12 @@ onMounted(() => {
     <div class="flex flex-col items-center justify-between h-full overflow-auto">
         <h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mt-10">苞米今天买车了么？？？</h1>
         <div class="flex flex-col items-center flex-1 mt-[10vh] gap-6">
-            <div class="text-lg font-semibold">历经三次退定金，三次换车，无数次换 4S 店后：</div>
-            <div class="text-9xl font-extrabold text-red-600">已下单!</div>
+            <div class="text-lg font-semibold">历经三次退定金，三次换车</div>
+            <div class="text-lg font-semibold">无数次换 4S 店后：</div>
+            <div class="text-6xl font-extrabold text-red-600">已下单!</div>
             <div class="text-9xl font-extrabold">🎉</div>
             <h2 class="mt-10 scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors">距离苞米提车还有：</h2>
-            <div class="text-5xl">{{ countdown }}</div>
+            <div class="text-4xl">{{ countdown }}</div>
         </div>
     </div>
 </template>
